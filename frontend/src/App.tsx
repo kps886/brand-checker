@@ -39,10 +39,8 @@ export default function App() {
     setError(null);
 
     try {
-      // Safely determine backend URL
       let backendUrl = 'http://localhost:5000';
-      
-      // Type assertion for import.meta.env to avoid TS errors if types aren't fully loaded
+
       const env = import.meta.env as Record<string, string>;
       if (env && env.VITE_BACKEND_URL) {
         backendUrl = env.VITE_BACKEND_URL;
@@ -73,8 +71,7 @@ export default function App() {
       setPrompt(''); 
     } catch (err) {
       console.error("API Error:", err);
-      
-      // Simulation Fallback for Demo
+
       const mockResult: AnalysisResult = {
         id: Date.now(),
         prompt: prompt,
